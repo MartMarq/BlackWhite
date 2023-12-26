@@ -299,9 +299,6 @@ if (IS_BTN_RIGHT_DOWN) {
   drawWatchFace();
   showWatchFace(true);
    }
-
-  Watchy::handleButtonPress();
-
 }
 
 void Uhr::vibrate() {
