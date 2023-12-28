@@ -274,31 +274,27 @@ void Uhr::handleButtonPress() {
       }
    }
 
-
-  if (IS_BTN_RIGHT_UP) {
+if (IS_BTN_RIGHT_UP) {
     vibrate();
-    Welche = Welche +1;
-    if (Welche>3) {
-      Welche =1;
+    Welche = Welche + 1;
+    if (Welche > 3) {
+      Welche = 1;
     }
-  RTC.read(currentTime);
-    uint8_t stundeA =  ((currentTime.Hour + 11) % 12) + 1;
-    int minuteA =  currentTime.Minute;
-  drawWatchFace();
-  showWatchFace(true);
+    RTC.read(currentTime);
+    drawWatchFace();
+    showWatchFace(true);
+  } else if (IS_BTN_RIGHT_DOWN) {
+    vibrate();
+    Welche = Welche - 1;
+    if (Welche < 1) {
+      Welche = 3;
+    }
+    RTC.read(currentTime);
+    drawWatchFace();
+    showWatchFace(true);
+  } else {
+    Watchy::handleButtonPress();
   }
-if (IS_BTN_RIGHT_DOWN) {
-  vibrate();
-    Welche = Welche -1;
-    if (Welche<1) {
-      Welche =3;
-    }
-  RTC.read(currentTime);
-    uint8_t stundeA =  ((currentTime.Hour + 11) % 12) + 1;
-    int minuteA =  currentTime.Minute;
-  drawWatchFace();
-  showWatchFace(true);
-   }
 }
 
 void Uhr::vibrate() {
